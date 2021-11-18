@@ -63,7 +63,7 @@ class VerifyMicroservice
     {
         $request->request->add([
             'user_id' => $decodedToken->storeId(),
-            'decodedToken' => $decodedToken
+            'token' => $decodedToken
         ]);
 
         return $request;
