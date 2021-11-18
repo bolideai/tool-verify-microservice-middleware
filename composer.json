@@ -1,0 +1,31 @@
+{
+    "name": "bolideai/verify-microservice",
+    "description": "verification between microservices",
+    "type": "library",
+    "require": {
+        "php": "^8.0",
+        "beberlei/assert": "^3.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bolideai\\VerifyMicroservice\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "V. Dubov",
+            "email": "vitaliy.dubov@bolide.ai"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bolideai\\VerifyMicroservice\\MicroseviceAuthServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.23"
+    }
+}
