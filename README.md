@@ -1,1 +1,1 @@
-Middleware авторизации микросервисов Laravel
+Middleware авторизации микросервисов Shopify Laravel

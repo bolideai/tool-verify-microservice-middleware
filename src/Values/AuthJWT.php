@@ -199,7 +199,7 @@ final class AuthJWT implements AuthJWTInterface
      */
     public function storeDomain(): string
     {
-        return $this->aud;
+        return $this->iss;
     }
 
     /**
