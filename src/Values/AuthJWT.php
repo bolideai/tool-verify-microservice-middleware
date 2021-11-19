@@ -105,6 +105,13 @@ final class AuthJWT implements AuthJWTInterface
     protected $uid;
 
     /**
+     * Store access token.
+     *
+     * @var string
+     */
+    protected $act;
+
+    /**
      * Constructor.
      *
      * @param string $token The JWT.
@@ -141,6 +148,7 @@ final class AuthJWT implements AuthJWTInterface
             $body['iat'],
             $body['jti'],
             $body['uid'],
+            $body['act']
         ])->notNull(self::EXCEPTION_MALFORMED);
 
         $this->iss = $body['iss'];
@@ -148,6 +156,7 @@ final class AuthJWT implements AuthJWTInterface
         $this->sub = $body['sub'];
         $this->jti = $body['jti'];
         $this->uid = $body['uid'];
+        $this->act = $body['act'];
         $this->exp = new Carbon($body['exp']);
         $this->nbf = new Carbon($body['nbf']);
         $this->iat = new Carbon($body['iat']);
@@ -171,6 +180,16 @@ final class AuthJWT implements AuthJWTInterface
     public function storeId(): int
     {
         return $this->uid;
+    }
+
+    /**
+     * Get store access token.
+     *
+     * @return string
+     */
+    public function accessToken(): string
+    {
+        return $this->act;
     }
 
     /**
