@@ -233,7 +233,7 @@ final class AuthJWT implements AuthJWTInterface
         $signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, $this->combinedKey(), true);
         $base64UrlSignature = Util::base64UrlEncode($signature);
 
-        Assertion::same($signatureProvided, $base64UrlSignature);
+        Assertion::same($signatureProvided, $base64UrlSignature, self::EXCEPTION_INVALID);
     }
 
     /**
