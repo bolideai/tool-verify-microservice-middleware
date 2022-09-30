@@ -11,7 +11,7 @@ use Assert\AssertionFailedException;
 use Bolideai\VerifyMicroservice\Util;
 use Bolideai\VerifyMicroservice\Values\Interfaces\AuthJWTInterface;
 
-final class AuthJWT implements AuthJWTInterface
+final class AuthJWT implements AuthJWTInterface, \Stringable
 {
     /**
      * The regex for the format of the JWT.
@@ -289,5 +289,10 @@ final class AuthJWT implements AuthJWTInterface
         $this->verifySignature();
         $this->verifyValidity();
         $this->verifyExpiration();
+    }
+
+    public function __toString()
+    {
+        return $this->string;
     }
 }
