@@ -1,1 +1,1 @@
-Middleware авторизации микросервисов Shopify Laravel
+Shopify Laravel authorization middleware for Bolide microservices
