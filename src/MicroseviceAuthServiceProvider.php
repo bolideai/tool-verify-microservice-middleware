@@ -13,11 +13,6 @@ class MicroseviceAuthServiceProvider extends ServiceProvider
         $this->bootMiddlewares();
     }
 
-    /**
-     * Boot the config for the package.
-     *
-     * @return void
-     */
     private function bootConfig(): void
     {
         $this->publishes([
@@ -25,11 +20,6 @@ class MicroseviceAuthServiceProvider extends ServiceProvider
         ]);
     }
 
-    /**
-     * Boot the middlewares for the package.
-     *
-     * @return void
-     */
     private function bootMiddlewares(): void
     {
         $this->app['router']->aliasMiddleware('verify.microservice', VerifyMicroservice::class);
