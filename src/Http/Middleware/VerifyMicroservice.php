@@ -13,14 +13,7 @@ use Bolideai\VerifyMicroservice\Http\Resources\ApiErrorResource;
 
 class VerifyMicroservice
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         $tokenSource = $this->getAccessTokenFromRequest($request);
 
@@ -40,41 +33,19 @@ class VerifyMicroservice
         return $next($request);
     }
 
-    /**
-     * Get the token from request (if available).
-     *
-     * @param Request $request The request object.
-     *
-     * @return string
-     */
     protected function getAccessTokenFromRequest(Request $request): ?string
     {
         return $request->bearerToken() ?? $request->get('token');
     }
 
-    /**
-     * Adds data to global request from the access token
-     *
-     * @param Request $request
-     * @param AuthJWT $decodedToken
-     * @return Request
-     */
-    protected function addPropertiesToRequest(Request $request, AuthJWT $decodedToken): Request
+    protected function addPropertiesToRequest(Request $request, AuthJWT $decodedToken): void
     {
-        $request->request->add([
+        $request->merge([
             'user_id' => $decodedToken->storeId(),
             'token' => $decodedToken
         ]);
-
-        return $request;
     }
 
-    /**
-     * Undocumented function
-     *
-     * @param string $message
-     * @return JsonResource
-     */
     protected function invalidRequest(string $message): JsonResource
     {
         return new ApiErrorResource([
