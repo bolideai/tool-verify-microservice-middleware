@@ -1,10 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bolideai\VerifyMicroservice;
 
-/**
- * Utilities and helpers used in various parts of the package.
- */
 class Util
 {
     public static function base64UrlDecode(string $data): string
