@@ -1,17 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bolideai\VerifyMicroservice\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ApiErrorResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request)
     {
         return [
@@ -20,13 +16,6 @@ class ApiErrorResource extends JsonResource
         ];
     }
 
-    /**
-     * Customize the outgoing response for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Http\Response  $response
-     * @return void
-     */
     public function withResponse($request, $response)
     {
         $response->setStatusCode(!empty($this->resource['status_code']) ? $this->resource['status_code'] : 400);
